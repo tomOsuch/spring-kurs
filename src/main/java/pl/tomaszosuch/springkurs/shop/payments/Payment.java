@@ -1,4 +1,4 @@
-package pl.tomaszosuch.springkurs.payments;
+package pl.tomaszosuch.springkurs.shop.payments;
 
 import lombok.Builder;
 import lombok.Value;
