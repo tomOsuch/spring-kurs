@@ -1,10 +1,10 @@
 package pl.tomaszosuch.springkurs.shop.time;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 
-@Component
+@Service
 public class SystemTimeProvider implements TimeProvider {
 
     @Override
