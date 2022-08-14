@@ -3,10 +3,12 @@ package pl.tomaszosuch.springkurs.shop.payments;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.javamoney.moneta.FastMoney;
+import org.springframework.stereotype.Component;
 import pl.tomaszosuch.springkurs.shop.time.TimeProvider;
 
 import java.time.Instant;
 
+@Component
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
 
