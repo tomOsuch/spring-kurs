@@ -1,5 +1,6 @@
 package pl.tomaszosuch.springkurs.shop.payments;
 
+import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,7 +8,7 @@ import pl.tomaszosuch.springkurs.shop.time.TimeProvider;
 
 import java.time.Instant;
 
-@Service
+@RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
 
     private static final PaymentStatus DEFAULT_PAYMENT_STATUS = PaymentStatus.STARTED;
@@ -16,14 +17,6 @@ public class PaymentProcessor implements PaymentService {
     private final PaymentFeeCalculator paymentFeeCalculator;
     private final PaymentRepository paymentsRepository;
     private final TimeProvider timeProvider;
-
-    @Autowired
-    public PaymentProcessor(PaymentIdGenerator paymentIdGenerator, PaymentFeeCalculator paymentFeeCalculator, PaymentRepository paymentsRepository, TimeProvider timeProvider) {
-        this.paymentIdGenerator = paymentIdGenerator;
-        this.paymentFeeCalculator = paymentFeeCalculator;
-        this.paymentsRepository = paymentsRepository;
-        this.timeProvider = timeProvider;
-    }
 
     @Override
     public Payment process(PaymentRequest paymentRequest) {

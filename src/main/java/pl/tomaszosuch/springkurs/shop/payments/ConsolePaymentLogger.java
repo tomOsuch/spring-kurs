@@ -4,20 +4,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_PROTOTYPE;
-import static org.springframework.beans.factory.config.BeanDefinition.SCOPE_SINGLETON;
-
-//@Scope(SCOPE_SINGLETON) default
-//@Scope(SCOPE_PROTOTYPE)
 @Aspect
-@Component
 @Log
 @RequiredArgsConstructor
 public class ConsolePaymentLogger {
