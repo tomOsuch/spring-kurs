@@ -13,15 +13,9 @@ public class PaymentsConfiguration {
         return new PercentagePaymentFeeCalculator(0.01);
     }
 
-    @Primary
     @Bean
-    public PaymentIdGenerator uuidPaymentIdGenerator() {
+    public PaymentIdGenerator paymentIdGenerator() {
         return new UuidPaymentIdGenerator();
-    }
-
-    @Bean
-    public  PaymentIdGenerator fakePaymentIdGenerator() {
-        return new FakePaymentIdGenerator();
     }
 
     @Bean
