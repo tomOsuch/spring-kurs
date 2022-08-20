@@ -2,11 +2,11 @@ package pl.tomaszosuch.springkurs.shop.payments;
 
 import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import pl.tomaszosuch.springkurs.shop.commons.aop.Length;
+import pl.tomaszosuch.springkurs.shop.commons.aop.Lock;
+import pl.tomaszosuch.springkurs.shop.commons.aop.LogExecutionTime;
+import pl.tomaszosuch.springkurs.shop.commons.aop.Retry;
 import pl.tomaszosuch.springkurs.shop.time.TimeProvider;
-
-import java.time.Instant;
 
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
@@ -18,6 +18,10 @@ public class PaymentProcessor implements PaymentService {
     private final PaymentRepository paymentsRepository;
     private final TimeProvider timeProvider;
 
+    @Lock
+    @Retry(attempts = 2)
+    @LogExecutionTime
+    @LogPayment
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var paymentValue = calculatePaymentValue(paymentRequest.getValue());
@@ -33,4 +37,11 @@ public class PaymentProcessor implements PaymentService {
     private FastMoney calculatePaymentValue(FastMoney paymentValue) {
         return paymentValue.add(paymentFeeCalculator.calculateFee(paymentValue));
     }
+
+    @Override
+    public Payment getById(@Length String id) {
+        return paymentsRepository.getById(id)
+                .orElseThrow(PaymentNotFoundException::new);
+    }
+
 }
