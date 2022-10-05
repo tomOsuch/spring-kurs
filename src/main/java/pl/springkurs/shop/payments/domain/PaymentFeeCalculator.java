@@ -1,7 +1,7 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.domain;
 
 import org.javamoney.moneta.FastMoney;
 
-public interface PaymentFeeCalculator {
+interface PaymentFeeCalculator {
     FastMoney calculateFee(FastMoney paymentValue);
 }

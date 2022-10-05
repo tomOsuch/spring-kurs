@@ -1,6 +1,7 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.adapters.events;
 
 import lombok.Value;
+import pl.springkurs.shop.payments.domain.Payment;
 
 @Value
 public class PaymentEvent {

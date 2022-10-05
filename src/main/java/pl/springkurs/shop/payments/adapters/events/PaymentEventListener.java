@@ -1,4 +1,4 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.adapters.events;
 
 import lombok.extern.java.Log;
 import org.springframework.context.event.EventListener;

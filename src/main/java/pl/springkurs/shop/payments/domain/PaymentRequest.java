@@ -1,4 +1,4 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.domain;
 
 import lombok.Value;
 import org.javamoney.moneta.FastMoney;

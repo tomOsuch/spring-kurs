@@ -1,4 +1,4 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.domain;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

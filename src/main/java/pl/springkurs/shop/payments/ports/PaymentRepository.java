@@ -1,4 +1,6 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.ports;
+
+import pl.springkurs.shop.payments.domain.Payment;
 
 import java.util.Optional;
 

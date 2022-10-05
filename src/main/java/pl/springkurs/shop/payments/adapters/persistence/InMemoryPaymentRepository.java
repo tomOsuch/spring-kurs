@@ -1,6 +1,8 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.adapters.persistence;
 
 import lombok.Setter;
+import pl.springkurs.shop.payments.domain.Payment;
+import pl.springkurs.shop.payments.ports.PaymentRepository;
 
 import java.util.HashMap;
 import java.util.Map;

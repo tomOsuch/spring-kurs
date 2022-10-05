@@ -1,10 +1,12 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.adapters.logging;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
+import pl.springkurs.shop.payments.domain.Payment;
+import pl.springkurs.shop.payments.domain.PaymentRequest;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -15,7 +17,7 @@ import javax.annotation.PreDestroy;
 @RequiredArgsConstructor
 public class ConsolePaymentLogger {
 
-    @Pointcut("execution(* pl.springkurs.shop.payments.PaymentProcessor.proc*( ..))")
+    @Pointcut("execution(* pl.springkurs.shop.payments.domain.PaymentProcessor.proc*( ..))")
     //@Pointcut("@annotation(Loggable)")
     //@Pointcut("bean(paymentService)")
     void process() {

@@ -1,11 +1,9 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
-import pl.springkurs.shop.commons.aop.Length;
-import pl.springkurs.shop.commons.aop.Lock;
-import pl.springkurs.shop.commons.aop.LogExecutionTime;
-import pl.springkurs.shop.commons.aop.Retry;
+import pl.springkurs.shop.payments.ports.PaymentRepository;
+import pl.springkurs.shop.payments.ports.PaymentService;
 import pl.springkurs.shop.time.TimeProvider;
 
 @RequiredArgsConstructor
@@ -18,10 +16,6 @@ public class PaymentProcessor implements PaymentService {
     private final PaymentRepository paymentsRepository;
     private final TimeProvider timeProvider;
 
-    @Lock
-    @Retry(attempts = 2)
-    @LogExecutionTime
-    @LogPayment
     @Override
     public Payment process(PaymentRequest paymentRequest) {
         var paymentValue = calculatePaymentValue(paymentRequest.getValue());
@@ -39,7 +33,7 @@ public class PaymentProcessor implements PaymentService {
     }
 
     @Override
-    public Payment getById(@Length String id) {
+    public Payment getById(String id) {
         return paymentsRepository.getById(id)
                 .orElseThrow(PaymentNotFoundException::new);
     }

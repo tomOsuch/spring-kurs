@@ -1,6 +1,8 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.adapters.persistence.jpa;
 
 import lombok.Setter;
+import pl.springkurs.shop.payments.domain.Payment;
+import pl.springkurs.shop.payments.ports.PaymentRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

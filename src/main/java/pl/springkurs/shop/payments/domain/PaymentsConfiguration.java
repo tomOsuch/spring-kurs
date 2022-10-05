@@ -1,7 +1,11 @@
-package pl.springkurs.shop.payments;
+package pl.springkurs.shop.payments.domain;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import pl.springkurs.shop.payments.adapters.logging.ConsolePaymentLogger;
+import pl.springkurs.shop.payments.adapters.persistence.jpa.JpaPaymentRepository;
+import pl.springkurs.shop.payments.ports.PaymentRepository;
+import pl.springkurs.shop.payments.ports.PaymentService;
 import pl.springkurs.shop.time.TimeProvider;
 
 @Configuration
