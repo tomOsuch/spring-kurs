@@ -1,4 +1,4 @@
-package pl.springkurs.shop.time;
+package pl.springkurs.shop.payments.ports;
 
 import java.time.Instant;
 

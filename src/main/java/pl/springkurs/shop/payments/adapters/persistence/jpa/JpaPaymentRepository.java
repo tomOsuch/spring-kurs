@@ -1,28 +1,26 @@
 package pl.springkurs.shop.payments.adapters.persistence.jpa;
 
 import lombok.Setter;
+import org.springframework.stereotype.Repository;
 import pl.springkurs.shop.payments.domain.Payment;
 import pl.springkurs.shop.payments.ports.PaymentRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.Optional;
 
-@Transactional
-public class JpaPaymentRepository implements PaymentRepository {
+@Repository
+public class JpaPaymentRepository {
 
     @PersistenceContext
     @Setter
     private EntityManager entityManager;
-    @Override
-    public Payment save(Payment payment) {
+    public PaymentEntity save(PaymentEntity payment) {
         entityManager.persist(payment);
         return payment;
     }
 
-    @Override
-    public Optional<Payment> getById(String id) {
-        return Optional.ofNullable(entityManager.find(Payment.class, id));
+    public Optional<PaymentEntity> getById(String id) {
+        return Optional.ofNullable(entityManager.find(PaymentEntity.class, id));
     }
 }

@@ -5,6 +5,7 @@ import lombok.extern.java.Log;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
 import pl.springkurs.shop.payments.domain.Payment;
 import pl.springkurs.shop.payments.domain.PaymentRequest;
 
@@ -13,6 +14,7 @@ import javax.annotation.PreDestroy;
 
 @Order(100)
 @Aspect
+@Component
 @Log
 @RequiredArgsConstructor
 public class ConsolePaymentLogger {
@@ -40,7 +42,7 @@ public class ConsolePaymentLogger {
         log.info("Payment processing failed %s (method: %s)".formatted(exception.getClass().getSimpleName(), joinPoint.getSignature().getName()));
     }
 
-    @After("bean(paymentService)")
+    @After("process()")
     public void onFinish() {
         log.info("Payment processing complete");
     }

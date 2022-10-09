@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
 import pl.springkurs.shop.payments.ports.PaymentRepository;
 import pl.springkurs.shop.payments.ports.PaymentService;
-import pl.springkurs.shop.time.TimeProvider;
+import pl.springkurs.shop.payments.ports.TimeProvider;
 
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
