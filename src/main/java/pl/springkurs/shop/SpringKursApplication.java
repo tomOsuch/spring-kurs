@@ -18,6 +18,7 @@ public class SpringKursApplication {
             var paymentRequest = new PaymentRequest(1L, FastMoney.of(1_000, DEFAULT_CURRENCY_CODE));
             var payment = paymentService.process(paymentRequest);
             log.info(paymentService.getById(payment.getId()).toString());
+
         }
 
     }
