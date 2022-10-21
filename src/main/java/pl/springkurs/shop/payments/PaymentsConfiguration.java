@@ -19,4 +19,10 @@ public class PaymentsConfiguration {
         return PAYMENT_SERVICE_FACTORY.create(paymentRepository, timeProvider);
     }
 
+    @Primary
+    @Bean
+    public PaymentService paymentServiceDecorator(PaymentService paymentService) {
+        return new PaymentServiceDecorator(paymentService);
+    }
+
 }

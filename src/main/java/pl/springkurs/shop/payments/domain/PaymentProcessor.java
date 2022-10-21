@@ -2,6 +2,9 @@ package pl.springkurs.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
+import pl.springkurs.shop.commons.Page;
+import pl.springkurs.shop.commons.aop.Atomic;
+import pl.springkurs.shop.commons.aop.ResultPage;
 import pl.springkurs.shop.payments.ports.PaymentRepository;
 import pl.springkurs.shop.payments.ports.PaymentService;
 import pl.springkurs.shop.payments.ports.TimeProvider;
@@ -36,6 +39,11 @@ public class PaymentProcessor implements PaymentService {
     public Payment getById(String id) {
         return paymentsRepository.getById(id)
                 .orElseThrow(PaymentNotFoundException::new);
+    }
+
+    @Override
+    public ResultPage<Payment> getByStatus(PaymentStatus status, Page page) {
+        return paymentsRepository.getByStatus(status, page);
     }
 
 }
