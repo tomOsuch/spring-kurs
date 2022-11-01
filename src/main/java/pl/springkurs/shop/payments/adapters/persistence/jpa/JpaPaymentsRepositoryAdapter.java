@@ -1,6 +1,7 @@
 package pl.springkurs.shop.payments.adapters.persistence.jpa;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import pl.springkurs.shop.commons.Page;
 import pl.springkurs.shop.commons.aop.ResultPage;
@@ -27,14 +28,15 @@ public class JpaPaymentsRepositoryAdapter implements PaymentRepository {
 
     @Override
     public Optional<Payment> getById(String id) {
-        return paymentRepository.getById(id)
+        return paymentRepository.findById(id)
                 .map(paymentMapper::toDomain);
     }
 
     @Override
     public ResultPage<Payment> getByStatus(PaymentStatus status, Page page) {
-        var payment = paymentRepository.getByStatus(status.name(), page);
-
-        return paymentMapper.toDomain(payment);
+        var pageRequest = PageRequest.of(page.getNumber(), page.getSize());
+        var resultPage= paymentRepository.getByStatus(status.name(), pageRequest);
+        var data = paymentMapper.toDomain(resultPage.getContent());
+        return new ResultPage<>(data, page.getNumber(), resultPage.getTotalPages());
     }
 }

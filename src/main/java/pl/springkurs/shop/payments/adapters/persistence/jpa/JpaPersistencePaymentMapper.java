@@ -3,7 +3,6 @@ package pl.springkurs.shop.payments.adapters.persistence.jpa;
 import org.mapstruct.IterableMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import pl.springkurs.shop.commons.aop.ResultPage;
 import pl.springkurs.shop.payments.domain.Payment;
 
 import java.util.List;
@@ -21,5 +20,4 @@ public interface JpaPersistencePaymentMapper {
     @IterableMapping(elementTargetType = Payment.class)
     List<Payment> toDomain(List<PaymentEntity> entities);
 
-    ResultPage<Payment> toDomain(ResultPage<PaymentEntity> page);
 }
