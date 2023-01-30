@@ -11,6 +11,9 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import pl.springkurs.shop.payments.adapters.time.SystemTimeProvider;
 import pl.springkurs.shop.payments.ports.TimeProvider;
 
@@ -19,12 +22,13 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @PropertySource("classpath:jdbc.properties")
+@EnableWebMvc
 @EnableJpaRepositories
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
 @ComponentScan
 @Configuration
-public class ShopConfiguration {
+public class ShopConfiguration implements WebMvcConfigurer {
 
     @Bean
     public TimeProvider systemTimeProvider() {
@@ -64,4 +68,11 @@ public class ShopConfiguration {
         return new JpaTransactionManager(entityManagerFactory);
     }
 
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**")
+                .allowedHeaders("*")
+                .allowedMethods("*")
+                .allowedOrigins("http://localhost:4200");
+    }
 }
