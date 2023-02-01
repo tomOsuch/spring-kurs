@@ -3,9 +3,12 @@ package pl.springkurs.shop.payments.adapters.rest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pl.springkurs.shop.commons.Page;
 import pl.springkurs.shop.commons.web.LocationUri;
-import pl.springkurs.shop.payments.domain.Payment;
+import pl.springkurs.shop.commons.web.ResultPageDto;
 import pl.springkurs.shop.payments.ports.PaymentService;
+
+import static pl.springkurs.shop.payments.domain.PaymentStatus.CONFIRMED;
 
 @RequestMapping("api/payments")
 @RestController
@@ -30,6 +33,14 @@ public class PaymentRestController {
         var payment = paymentService.getById(id);
         var paymentDto = paymentMapper.toDto(payment);
         return ResponseEntity.ok(paymentDto);
+    }
+
+    @GetMapping("confirmed")
+    public ResponseEntity<ResultPageDto<PaymentDto>> getConfirmedPayments() {
+        var page = new Page(0, 5);
+        var resultPage = paymentService.getByStatus(CONFIRMED, page);
+        var resultPageDto = paymentMapper.toDto(resultPage);
+        return ResponseEntity.ok(resultPageDto);
     }
 
 }

@@ -1,4 +1,4 @@
-package pl.springkurs.shop.commons.aop;
+package pl.springkurs.shop.commons;
 
 import lombok.Value;
 

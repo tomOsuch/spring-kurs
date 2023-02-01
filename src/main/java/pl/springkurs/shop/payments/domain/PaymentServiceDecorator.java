@@ -3,7 +3,7 @@ package pl.springkurs.shop.payments.domain;
 import lombok.RequiredArgsConstructor;
 import pl.springkurs.shop.commons.Page;
 import pl.springkurs.shop.commons.aop.Atomic;
-import pl.springkurs.shop.commons.aop.ResultPage;
+import pl.springkurs.shop.commons.ResultPage;
 import pl.springkurs.shop.payments.ports.PaymentService;
 
 import java.util.List;

@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 import pl.springkurs.shop.commons.Page;
-import pl.springkurs.shop.commons.aop.ResultPage;
+import pl.springkurs.shop.commons.ResultPage;
 import pl.springkurs.shop.payments.domain.Payment;
 import pl.springkurs.shop.payments.domain.PaymentStatus;
 import pl.springkurs.shop.payments.ports.PaymentRepository;

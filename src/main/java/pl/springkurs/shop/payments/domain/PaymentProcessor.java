@@ -3,8 +3,7 @@ package pl.springkurs.shop.payments.domain;
 import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
 import pl.springkurs.shop.commons.Page;
-import pl.springkurs.shop.commons.aop.Atomic;
-import pl.springkurs.shop.commons.aop.ResultPage;
+import pl.springkurs.shop.commons.ResultPage;
 import pl.springkurs.shop.payments.ports.PaymentRepository;
 import pl.springkurs.shop.payments.ports.PaymentService;
 import pl.springkurs.shop.payments.ports.TimeProvider;
@@ -12,7 +11,7 @@ import pl.springkurs.shop.payments.ports.TimeProvider;
 @RequiredArgsConstructor
 public class PaymentProcessor implements PaymentService {
 
-    private static final PaymentStatus DEFAULT_PAYMENT_STATUS = PaymentStatus.STARTED;
+    private static final PaymentStatus DEFAULT_PAYMENT_STATUS = PaymentStatus.CONFIRMED;
 
     private final PaymentIdGenerator paymentIdGenerator;
     private final PaymentFeeCalculator paymentFeeCalculator;

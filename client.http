@@ -1,14 +1,20 @@
-GET http://localhost:8080/api/payments/7297cc7f-0b70-4bb6-ba6a-02f2d8b223a9
-Accept: application/json
-Content-Type: application/json
-
-###
-
 POST http://localhost:8080/api/payments
 Accept: application/json
 Content-Type: application/json
 
 {
   "requestId": 3,
-  "value": "300 PLN"
+  "value": "200 PLN"
 }
+
+###
+
+GET http://localhost:8080/api/payments/eb595d34-a449-422c-b0ea-f59e1e7980ad
+Accept: application/json
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/payments/confirmed?pageSize=2&pageNumber=0
+Accept: application/json
+Content-Type: application/json
