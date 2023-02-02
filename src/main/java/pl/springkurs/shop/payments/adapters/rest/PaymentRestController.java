@@ -3,7 +3,9 @@ package pl.springkurs.shop.payments.adapters.rest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import pl.springkurs.shop.commons.Extended;
 import pl.springkurs.shop.commons.Page;
 import pl.springkurs.shop.commons.web.ExceptionDto;
 import pl.springkurs.shop.commons.web.LocationUri;
@@ -24,7 +26,7 @@ public class PaymentRestController {
     private final RestPaymentMapper paymentMapper;
 
     @PostMapping
-    public ResponseEntity<PaymentDto> process(@Valid @RequestBody PaymentRequestDto paymentRequestDto) {
+    public ResponseEntity<PaymentDto> process(/*@Valid*/ @Validated(Extended.class) @RequestBody PaymentRequestDto paymentRequestDto) {
 
         var paymentRequest = paymentMapper.toDomain(paymentRequestDto);
         var payment = paymentService.process(paymentRequest);
