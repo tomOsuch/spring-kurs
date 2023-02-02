@@ -1,11 +1,14 @@
 package pl.springkurs.shop.payments.adapters.rest;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.springkurs.shop.commons.Page;
+import pl.springkurs.shop.commons.web.ExceptionDto;
 import pl.springkurs.shop.commons.web.LocationUri;
 import pl.springkurs.shop.commons.web.ResultPageDto;
+import pl.springkurs.shop.payments.domain.PaymentNotFoundException;
 import pl.springkurs.shop.payments.ports.PaymentService;
 
 import static pl.springkurs.shop.payments.domain.PaymentStatus.CONFIRMED;
@@ -42,5 +45,13 @@ public class PaymentRestController {
         var resultPageDto = paymentMapper.toDto(resultPage);
         return ResponseEntity.ok(resultPageDto);
     }
+
+    /*@ExceptionHandler(PaymentNotFoundException.class)
+    public ResponseEntity<ExceptionDto> onPaymentNotFound(PaymentNotFoundException payment) {
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                .body(new ExceptionDto("Payment not found"));
+    }*/
+
+
 
 }
