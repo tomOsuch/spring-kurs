@@ -1,6 +1,5 @@
 package pl.springkurs.shop.payments.domain;
 
-import pl.springkurs.shop.payments.domain.PaymentIdGenerator;
 
 import java.util.UUID;
 

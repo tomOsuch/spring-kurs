@@ -2,7 +2,6 @@ package pl.springkurs.shop.payments.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.javamoney.moneta.FastMoney;
-import pl.springkurs.shop.payments.domain.PaymentFeeCalculator;
 
 @RequiredArgsConstructor
 class PercentagePaymentFeeCalculator implements PaymentFeeCalculator {
