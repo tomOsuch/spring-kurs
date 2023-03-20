@@ -3,7 +3,7 @@ spring:
     generate-ddl: true
     open-in-view: false
   messages:
-    basename: exceptions
+    basename: text, exceptions
   h2:
     console:
       enabled: true
