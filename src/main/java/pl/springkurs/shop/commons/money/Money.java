@@ -12,8 +12,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Money {
 
-    String message() default "Invalid money";
-    Class<?>[] group() default {};
+    String message() default "invalid money";
+    Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
     double minValue() default 1;
 }
